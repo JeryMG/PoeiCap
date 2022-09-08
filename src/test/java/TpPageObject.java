@@ -10,6 +10,7 @@ public class TpPageObject {
 
     final String searchKeyword = "Apple iPhone 13 Pro Max (256 Go) - Vert Alpin";
     final int searchResultIndex = 0;
+    final int quantityIndex = 2;
 
 
     @BeforeMethod
@@ -37,5 +38,8 @@ public class TpPageObject {
         productPage.addToCart();
         productPage.refuseAppleCare();
         productPage.openCart();
+
+        CartPage cartPage = new CartPage(driver);
+        cartPage.selectQuantity(quantityIndex);
     }
 }
