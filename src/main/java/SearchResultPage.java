@@ -14,8 +14,10 @@ public class SearchResultPage {
         this.driver = driver;
     }
 
-    public void OpenSearchResult(int index) {
+    public ProductPage OpenSearchResult(int index) {
         List<WebElement> listResults = driver.findElements(firstSearchResultSelector);
         listResults.get(index).click();
+
+        return new ProductPage(driver);
     }
 }

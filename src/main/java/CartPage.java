@@ -20,7 +20,7 @@ public class CartPage {
         this.driver = driver;
     }
 
-    public void selectQuantity(int quantity){
+    public CartPage selectQuantity(int quantity){
         Select quantitySelect = new Select(driver.findElement(quantitySelector));
         quantitySelect.selectByIndex(quantity);
         try {
@@ -28,6 +28,7 @@ public class CartPage {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        return this;
     }
 
     public String getFirstProductName(){

@@ -18,16 +18,19 @@ public class HomePage {
         this.driver = driver;
     }
 
-    public void acceptCookies(){
+    public HomePage acceptCookies(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT_COOKIE));
         WebElement acceptButton = wait.until(ExpectedConditions.visibilityOfElementLocated(acceptCookiesSelector));
         acceptButton.click();
+        return this;
     }
 
-    public void searchWithButton(String keyword){
+    public SearchResultPage searchWithButton(String keyword){
         WebElement searchBar = driver.findElement(searchBarSelector);
         searchBar.sendKeys(keyword);
         WebElement loupe = driver.findElement(magnifierButton);
         loupe.click();
+
+        return new SearchResultPage(driver);
     }
 }

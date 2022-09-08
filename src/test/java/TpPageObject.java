@@ -43,19 +43,13 @@ public class TpPageObject {
     public void testPO() {
         //Action
         HomePage homePage = new HomePage(driver);
-        homePage.acceptCookies();
-        homePage.searchWithButton(searchKeyword);
-
-        SearchResultPage searchResultPage = new SearchResultPage(driver);
-        searchResultPage.OpenSearchResult(searchResultIndex);
-
-        ProductPage productPage = new ProductPage(driver);
-        productPage.addToCart();
-        productPage.refuseAppleCare();
-        productPage.openCart();
-
-        CartPage cartPage = new CartPage(driver);
-        cartPage.selectQuantity(quantityIndex);
+        CartPage cartPage = homePage.acceptCookies()
+                .searchWithButton(searchKeyword)
+                .OpenSearchResult(searchResultIndex)
+                .addToCart()
+                .refuseAppleCare()
+                .openCart()
+                .selectQuantity(quantityIndex);
 
         //Assert
         Assert.assertEquals(cartPage.getFirstProductName(), expectedProductName, "Le titre du produit est incorrect");
@@ -64,8 +58,6 @@ public class TpPageObject {
         Assert.assertEquals(cartPage.getFirstProductSubConfiguration(), expectedCongig, "La config affichée n'est pas correcte");
 
         //Cas particulier
-
-
         Assert.assertEquals(cartPage.GetFirstProductSubTotalCart(), expectedSubTotal, "Le nombre de produits est incorrect");
     }
 }
