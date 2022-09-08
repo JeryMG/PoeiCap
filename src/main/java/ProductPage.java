@@ -10,7 +10,10 @@ public class ProductPage {
 
     WebDriver driver;
     private final int TIMEOUT_APPLECARE = 5;
+    private final int TIMEOUT_CART = 5;
     By addToCartButtonSelector = By.cssSelector("[name='submit.add-to-cart']");
+    By noAppleCareSelector = By.cssSelector("#attachSiNoCoverage");
+    By cartButtonSelector = By.cssSelector("#attach-view-cart-button-form");
 
     public ProductPage(WebDriver driver){
         this.driver = driver;
@@ -23,7 +26,13 @@ public class ProductPage {
 
     public void refuseAppleCare(){
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT_APPLECARE));
-        WebElement noGarantyButton = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#attachSiNoCoverage")));
+        WebElement noGarantyButton = wait.until(ExpectedConditions.visibilityOfElementLocated(noAppleCareSelector));
         noGarantyButton.click();
+    }
+
+    public void openCart(){
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT_CART));
+        WebElement basketButton = wait.until(ExpectedConditions.visibilityOfElementLocated(cartButtonSelector));
+        basketButton.click();
     }
 }

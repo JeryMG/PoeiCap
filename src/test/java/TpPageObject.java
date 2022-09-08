@@ -36,5 +36,6 @@ public class TpPageObject {
         ProductPage productPage = new ProductPage(driver);
         productPage.addToCart();
         productPage.refuseAppleCare();
+        productPage.openCart();
     }
 }
