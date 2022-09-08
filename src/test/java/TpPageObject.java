@@ -25,12 +25,16 @@ public class TpPageObject {
     }
 
     @Test
-    public void testPO() {
+    public void testPO() throws InterruptedException {
         HomePage homePage = new HomePage(driver);
         homePage.acceptCookies();
         homePage.searchWithButton(searchKeyword);
 
         SearchResultPage searchResultPage = new SearchResultPage(driver);
         searchResultPage.OpenSearchResult(searchResultIndex);
+
+        ProductPage productPage = new ProductPage(driver);
+        productPage.addToCart();
+        productPage.refuseAppleCare();
     }
 }
