@@ -17,11 +17,12 @@ import java.util.List;
 
 public class Tp4 {
 
-    WebDriver driver = new ChromeDriver();
+    public WebDriver driver;
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
     @BeforeMethod
     private void setup(){
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.amazon.fr");
 
