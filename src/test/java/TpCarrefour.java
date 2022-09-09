@@ -1,3 +1,5 @@
+import carrefour.CartPage;
+import carrefour.HomePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
@@ -22,6 +24,11 @@ public class TpCarrefour {
 
     @Test
     public void testCarrefour() {
-        
+
+        //Action
+        HomePage homePage = new HomePage(driver);
+        homePage.acceptCookies()
+                .clickHomeHobbiesButton()
+                .OpenRayonMenu();
     }
 }
