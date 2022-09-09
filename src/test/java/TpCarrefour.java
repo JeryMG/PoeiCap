@@ -29,6 +29,9 @@ public class TpCarrefour {
         HomePage homePage = new HomePage(driver);
         homePage.acceptCookies()
                 .clickHomeHobbiesButton()
-                .OpenRayonMenu();
+                .OpenRayonMenu()
+                .HoverSportsLClickBSellers()
+                .ClickBestSellersButton()
+                .ClickOnFirstSportProduct();
     }
 }
