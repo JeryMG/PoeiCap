@@ -19,7 +19,7 @@ public class ShoppingPage {
     By rayonMenuSelector = By.cssSelector("#data-menu-level-0");
     By rayonAllCategoriesSelector = By.cssSelector("#data-menu-level-0>.nav-item");
     int sportCategoryIndex = 4;
-    By secondMenuSelector = By.cssSelector("#data-menu-level-1_R26");
+    By secondMenuSelector = By.cssSelector("#data-menu-level-1_R26>.nav-item");
     int bestSellersButtonIndex = 2;
     By secondMenuAllCategoriesSelector = By.cssSelector("[data-testid=nav-item-submenu].nav-item__menu.nav-item__menu-level-1>.nav-item");
 
@@ -46,10 +46,10 @@ public class ShoppingPage {
     }
 
     public BestSellersPage ClickBestSellersButton(){
-        List<WebElement> menu2Categories = driver.findElements(secondMenuAllCategoriesSelector);
+        List<WebElement> menu2Categories = driver.findElements(secondMenuSelector);
         WebDriverWait wait3 = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT_RAYONMENU));
-        wait3.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='data-menu-level-1_R26']/li[3]")));
-        WebElement button = driver.findElement(By.xpath("//*[@id='data-menu-level-1_R26']/li[3]"));
+        wait3.until(ExpectedConditions.elementToBeClickable(menu2Categories.get(bestSellersButtonIndex)));
+        WebElement button = menu2Categories.get(bestSellersButtonIndex);
         button.click();
         return new BestSellersPage(driver);
     }
