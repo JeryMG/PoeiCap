@@ -2,6 +2,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -9,6 +10,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.beans.PropertyChangeListener;
 import java.time.Duration;
 
 public class TpPageObject {
@@ -43,6 +47,7 @@ public class TpPageObject {
     public void testPO() {
         //Action
         HomePage homePage = new HomePage(driver);
+
         CartPage cartPage = homePage.acceptCookies()
                 .searchWithButton(searchKeyword)
                 .OpenSearchResult(searchResultIndex)
@@ -59,5 +64,20 @@ public class TpPageObject {
 
         //Cas particulier
         Assert.assertEquals(cartPage.GetFirstProductSubTotalCart(), expectedSubTotal, "Le nombre de produits est incorrect");
+    }
+
+
+    @Test
+    public void testHover(){
+        
+        Actions actions = new Actions(driver);
+        WebElement elementToHover = driver.findElement(By.cssSelector("#nav-link-accountList"));
+        actions.moveToElement(elementToHover);
+        actions.perform();
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
