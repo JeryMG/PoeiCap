@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import static java.lang.Thread.sleep;
 
-public class Tp1 {
+public class Tp1Test {
 
     @Test
     public void test1() throws InterruptedException {
