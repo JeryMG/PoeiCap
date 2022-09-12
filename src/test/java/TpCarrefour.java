@@ -1,3 +1,4 @@
+import carrefour.BestSellersPage;
 import carrefour.CartPage;
 import carrefour.HomePage;
 import carrefour.ProductPage;

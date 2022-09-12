@@ -13,18 +13,23 @@ public class BestSellersPage {
 
     WebDriver driver;
 
-    By ButtonsListSelector = By.cssSelector(".ds-button.ds-button--secondary.show-options-cta>.ds-button__label.ds-button__label--hidden");
-    int productToSeeIndex = 0;
+    By ButtonsListSelector = By.cssSelector(".ds-carousel__items>.ds-carousel__item");
+    int productToSeeIndex = 20;
+
+    By firstElementSelector = By.cssSelector("html > body > main > div > div > div > div > div:nth-of-type(4) > div > div > div > div > div:nth-of-type(1) > div:nth-of-type(1) > article > div:nth-of-type(1) > div > a");
 
     public BestSellersPage(WebDriver driver){
         this.driver = driver;
     }
 
     public ProductPage ClickOnFirstSportProduct(){
-        List<WebElement> voirButtonsList = driver.findElements(ButtonsListSelector);
+        //List<WebElement> voirButtonsList = driver.findElements(ButtonsListSelector);
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        wait.until(ExpectedConditions.elementToBeClickable(voirButtonsList.get(productToSeeIndex)));
-        voirButtonsList.get(productToSeeIndex).click();
+        //wait.until(ExpectedConditions.elementToBeClickable(voirButtonsList.get(productToSeeIndex)));
+        wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(firstElementSelector)));
+        //voirButtonsList.get(productToSeeIndex).click();
+        WebElement element = driver.findElement(firstElementSelector);
+        element.click();
         return new ProductPage(driver);
     }
 }
