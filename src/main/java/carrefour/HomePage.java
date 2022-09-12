@@ -7,7 +7,7 @@ import org.openqa.selenium.WebElement;
 public class HomePage {
 
     WebDriver driver;
-    By acceptCookiesSelector = By.cssSelector("#sp-cc-accept");
+    By acceptCookiesSelector = By.cssSelector(".banner-actions-container>#onetrust-accept-btn-handler");
     By maisonLoisirButtonSelector = By.cssSelector("[for = header-tab-non-food]>.header__topbar-tabs-link");
 
     public HomePage(WebDriver driver){
