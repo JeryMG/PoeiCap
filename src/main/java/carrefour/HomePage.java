@@ -11,7 +11,7 @@ import java.time.Duration;
 public class HomePage {
 
     WebDriver driver;
-    By acceptCookiesSelector = By.cssSelector(".banner-actions-container>#onetrust-accept-btn-handler");
+    By acceptCookiesSelector = By.cssSelector("html > body > div:nth-of-type(4) > div:nth-of-type(3) > div > div > div:nth-of-type(2) > div > div > button");
     By maisonLoisirButtonSelector = By.cssSelector("[for = header-tab-non-food]>.header__topbar-tabs-link");
 
     public HomePage(WebDriver driver){
