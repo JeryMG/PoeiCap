@@ -4,15 +4,25 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
+
 public class TpPageObject {
 
-    WebDriver driver;
+    RemoteWebDriver driver;
+    ChromeOptions options = new ChromeOptions();
+    FirefoxOptions options2 = new FirefoxOptions();
+    EdgeOptions options3 = new EdgeOptions();
 
     final String searchKeyword = "Apple iPhone 13 Pro Max (256 Go) - Vert Alpin";
     final int searchResultIndex = 0;
@@ -27,8 +37,9 @@ public class TpPageObject {
 
 
     @BeforeMethod
-    private void setup(){
-        driver = new ChromeDriver();
+    private void setup() throws MalformedURLException {
+        System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "\\src\\Resources\\chromedriver.exe");
+        driver = new RemoteWebDriver(new URL("http://192.168.121.20:4444"), options);
         driver.manage().window().maximize();
         driver.get("https://www.amazon.fr");
     }
