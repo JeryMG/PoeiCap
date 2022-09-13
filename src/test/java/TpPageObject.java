@@ -38,8 +38,8 @@ public class TpPageObject {
 
     @BeforeMethod
     private void setup() throws MalformedURLException {
-        System.setProperty("webdriver.chrome.driver",System.getProperty("user.dir") + "\\src\\Resources\\chromedriver.exe");
-        driver = new RemoteWebDriver(new URL("http://192.168.121.20:4444"), options);
+        System.setProperty("webdriver.msedge.driver",System.getProperty("user.dir") + "\\src\\Resources\\msedgedriver.exe");
+        driver = new RemoteWebDriver(new URL("http://192.168.121.20:4444"), options3);
         driver.manage().window().maximize();
         driver.get("https://www.amazon.fr");
     }
